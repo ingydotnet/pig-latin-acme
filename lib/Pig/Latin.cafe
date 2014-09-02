@@ -1,0 +1,17 @@
+Class Pig::Latin
+
+\@ @buffer
+
+\convert
+  pig-latin-words = @buffer.split(/\ +/).map \(word)
+    lword = word.lower
+    m = lword =~ /^([^aeiou]*)(.*)$/ or !!! 'error'
+    if m:1 == 0
+      ay = 'way'
+    else
+      ay = 'ay'
+    pword = m:2 + m:1 + ay
+    if word =~ /^[A-Z]/
+      pword = pword:0.upper + pword:1:
+    pword
+  pig-latin-words.join ' '

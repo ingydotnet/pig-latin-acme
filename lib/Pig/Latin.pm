@@ -16,7 +16,7 @@ sub convert {
         else {
             $ay = 'ay';
         }
-        my $pword = $2 . $1 . 'ay';
+        my $pword = $2 . $1 . $ay;
         if ($word =~ /^[A-Z]/) {
             $pword = ucfirst($pword);
         }

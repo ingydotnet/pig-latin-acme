@@ -1,0 +1,16 @@
+=meta: 0.0.2
+
+name: Pig-Latin
+version: 0.0.1
+abstract: Convert English to Pig Latin
+homepage: https://acmeism.org
+language: cafe
+license: MIT
+copyright: 2014
+
+author: https://github.com/ingydotnet/ingy-meta/blob/1c2353a/Meta
+
+devel:
+  git: https://github.com/ingydotnet/pig-latin-acme
+  bug: https://github.com/ingydotnet/pig-latin-acme/issues
+  irc: irc.freenode.net#pkg

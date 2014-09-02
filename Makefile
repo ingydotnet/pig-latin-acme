@@ -11,6 +11,9 @@ test: lib/Pig/Latin.js
 	@echo
 	@echo '--- JavaScript'
 	node test/test.js
+	@echo
+	@echo '--- Python'
+	python test/test.py
 
 lib/Pig/Latin.js: lib/Pig/Latin.coffee
 	@coffee --compile $< > $@

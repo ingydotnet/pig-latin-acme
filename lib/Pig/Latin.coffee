@@ -1,4 +1,5 @@
-exports.PigLatin = class PigLatin
+exports.Pig ||= class Pig
+exports.Pig.Latin = class Latin
   constructor: (@buffer) ->
 
   convert: ->

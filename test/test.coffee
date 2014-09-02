@@ -1,4 +1,4 @@
-{PigLatin} = require '../lib/Pig/Latin'
+{Pig} = require '../lib/Pig/Latin'
 
-console.log new PigLatin('Pig stratin').convert()
-console.log new PigLatin('I Like Apples').convert()
+console.log new Pig.Latin('Pig stratin').convert()
+console.log new Pig.Latin('I Like Apples').convert()

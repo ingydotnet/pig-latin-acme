@@ -8,7 +8,7 @@ sub convert {
     my @pig_latin_words = map {
         my $word = $_;
         my $lword = lc($word);
-        $lword =~ /^([^aeiou]*)(.*)$/;
+        $lword =~ /^([^aeiou]*)(.*)$/ or die 'error';
         my $ay;
         if (length($1) == 0) {
             $ay = 'way';

@@ -36,4 +36,4 @@ doc:
 	swim --to=pod --wrap=1 doc/Pig/Latin.swim > ReadMe.pod
 
 clean purge:
-	find . -name *.pyc$$ | xargs rm
+	find . -name *.pyc | xargs rm

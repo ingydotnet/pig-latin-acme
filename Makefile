@@ -1,12 +1,15 @@
 .PHONY: test
 test: lib/Pig/Latin.js
-	@echo '---'
+	@echo '--- Perl'
 	perl test/test.pl
-	@echo '---'
+	@echo
+	@echo '--- Ruby'
 	ruby test/test.rb
-	@echo '---'
+	@echo
+	@echo '--- CoffeeScript'
 	coffee test/test.coffee
-	@echo '---'
+	@echo
+	@echo '--- JavaScript'
 	node test/test.js
 
 lib/Pig/Latin.js: lib/Pig/Latin.coffee

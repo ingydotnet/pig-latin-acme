@@ -4,7 +4,7 @@ our $VERSION = '0.0.1';
 
 use Moose;
 
-has buffer => (is => 'ro');
+has buffer => (is => 'ro', required => 1);
 
 sub convert {
     my ($self) = @_;
@@ -21,7 +21,7 @@ sub convert {
         }
         my $pword = $2 . $1 . $ay;
         if ($word =~ /^[A-Z]/) {
-            $pword = ucfirst($pword);
+            $pword = uc(substr $pword, 0, 1) . substr $pword, 1;
         }
         $pword;
     } split / +/, $self->buffer;

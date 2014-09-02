@@ -1,0 +1,26 @@
+Pig::Latin
+==========
+
+Convert English to Pig Latin
+
+<badge travis ingydotnet/pig-latin-acme>
+
+= Synopsis
+
+  use Pig::Latin
+  say Pig::Latin('I love Pig Latin').convert
+
+= Description
+
+This is an Acmeist version of a Pig Latin translation framework written in
+CafeScript that publishes to CPAN, RubyGems, PyPI and NPM.
+
+= Author
+
+Written by Ingy döt Net <ingy@ingy.net>
+
+= Copyright & License
+
+The MIT License (MIT)
+
+Copyright 2014. Ingy döt Net.

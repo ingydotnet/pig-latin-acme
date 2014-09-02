@@ -16,7 +16,7 @@ class Pig::Latin
       end
       pword = m[2] + m[1] + ay
       if word.match /^[A-Z]/
-        pword[0] = pword[0,1].upcase
+        pword[0] = pword[0].upcase
       end
       pword
     }

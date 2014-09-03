@@ -26,6 +26,11 @@ test: lib/Pig/Latin.js
 	@echo
 	@echo -n '>>> '
 	python test/test.py
+	@echo
+	@echo -n '>>> '
+	g++ -std=c++11 -o test/test-cpp test/test.cpp
+	test/test-cpp
+	@rm test/test-cpp
 
 lib/Pig/Latin.js: lib/Pig/Latin.coffee
 	@coffee --compile $< > $@

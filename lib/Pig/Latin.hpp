@@ -79,10 +79,12 @@ namespace Pig {
     ) {
       pword.at(0) = toupper(pword.at(0));
     }
+
+    // Set our return value (via param)
     s = pword;
   }
 
-}
+} // End of Pig namespace.
 
 #endif
 

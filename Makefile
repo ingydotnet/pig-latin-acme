@@ -28,7 +28,7 @@ test: lib/Pig/Latin.js
 	python test/test.py
 	@echo
 	@echo -n '>>> '
-	g++ -std=c++11 -o test/test-cpp test/test.cpp
+	g++ -o test/test-cpp test/test.cpp
 	test/test-cpp
 	@rm test/test-cpp
 

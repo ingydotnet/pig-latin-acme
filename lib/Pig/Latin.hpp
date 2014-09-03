@@ -25,10 +25,12 @@ namespace Pig {
     
     // Split on single space, copy to vector named "words".
     std::istringstream iss(buffer);
-    std::vector<std::string> words{
-      std::istream_iterator<std::string>{iss},
-      std::istream_iterator<std::string>{}
-    };
+    std::vector<std::string> words;
+    std::copy(
+      std::istream_iterator<std::string>(iss),
+      std::istream_iterator<std::string>(),
+      std::back_inserter(words)
+    );
 
     std::for_each( words.begin(), words.end(), ptransform );
 

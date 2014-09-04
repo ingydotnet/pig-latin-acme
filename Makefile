@@ -12,25 +12,56 @@ help:
 	@echo ''
 
 test: lib/Pig/Latin.js
-	@echo -n '>>> '
+ifeq (,$(shell which perl))
+	@echo 'XXX No Perl available'
+else
+	@echo -n '>>> Perl:'
 	perl test/test.pl
+endif
 	@echo
-	@echo -n '>>> '
+ifeq (,$(shell which perl6))
+	@echo 'XXX No Perl 6 available'
+else
+	@echo -n '>>> Perl 6:'
+	perl6 test/test.pl6
+endif
+	@echo
+ifeq (,$(shell which ruby))
+	@echo 'XXX No Ruby available'
+else
+	@echo -n '>>> Ruby:'
 	ruby test/test.rb
+endif
 	@echo
-	@echo -n '>>> '
+ifeq (,$(shell which coffee))
+	@echo 'XXX No CoffeeScript available'
+else
+	@echo -n '>>> CoffeeScript:'
 	coffee test/test.coffee
+endif
 	@echo
-	@echo -n '>>> '
+ifeq (,$(shell which node))
+	@echo 'XXX No Node.js available'
+else
+	@echo -n '>>> Node.js:'
 	node test/test.js
+endif
 	@echo
-	@echo -n '>>> '
+ifeq (,$(shell which python))
+	@echo 'XXX No Python available'
+else
+	@echo -n '>>> Python:'
 	python test/test.py
+endif
 	@echo
-	@echo -n '>>> '
+ifeq (,$(shell which g++))
+	@echo 'XXX No C++ available'
+else
+	@echo -n '>>> CPP:'
 	g++ -o test/test-cpp test/test.cpp
 	test/test-cpp
 	@rm test/test-cpp
+endif
 
 lib/Pig/Latin.js: lib/Pig/Latin.coffee
 	@coffee --compile $< > $@

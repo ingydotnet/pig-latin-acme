@@ -1,4 +1,4 @@
-BEGIN { @*INC.push( 'lib' ) };
+use lib 'lib';
 use Pig::Latin;
 
 say Pig::Latin.new(english => 'Pig latin').convert;

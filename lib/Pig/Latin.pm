@@ -4,7 +4,7 @@ our $VERSION = '0.0.1';
 
 use Moose;
 
-has buffer => (is => 'ro', required => 1);
+has english => (is => 'ro', required => 1);
 
 sub convert {
     my ($self) = @_;
@@ -24,7 +24,7 @@ sub convert {
             $pword = uc(substr $pword, 0, 1) . substr $pword, 1;
         }
         $pword;
-    } split / +/, $self->buffer;
+    } split / +/, $self->english;
     join ' ', @pig_latin_words;
 }
 

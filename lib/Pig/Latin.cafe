@@ -1,9 +1,9 @@
 Class Pig::Latin
 
-\@ @buffer
+\@ @english
 
 \convert
-  pig-latin-words = @buffer.split(/\ +/).map \(word)
+  pig-latin-words = @english.split(/\ +/).map \(word)
     lword = word.lower
     m = lword =~ /^([^aeiou]*)(.*)$/ or !!! 'error'
     if m:1 == 0

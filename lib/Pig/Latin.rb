@@ -1,12 +1,12 @@
 class Pig; end
 class Pig::Latin
-  def initialize buffer
-    @buffer = buffer
+  def initialize english
+    @english = english
     @state = 'english'
   end
 
   def convert
-    pig_latin_words = @buffer.split(/ +/).map { |word|
+    pig_latin_words = @english.split(/ +/).map { |word|
       lword = word.downcase
       m = lword.match(/^([^aeiou]*)(.*)$/) or throw 'error'
       if m[1].length == 0

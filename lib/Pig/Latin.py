@@ -1,11 +1,11 @@
 import re
 
 class PigLatin():
-    def __init__(self, buffer):
-        self.buffer = buffer
+    def __init__(self, english):
+        self.english = english
 
     def convert(self):
-        pig_latin_words = self.buffer.split(' ')
+        pig_latin_words = self.english.split(' ')
         def _convert(word):
             lword = word.lower()
             m = re.search(r'^([^aeiou]*)(.*)$', lword)

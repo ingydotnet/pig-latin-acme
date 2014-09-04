@@ -1,9 +1,9 @@
 exports.Pig ||= class Pig
 exports.Pig.Latin = class Latin
-  constructor: (@buffer) ->
+  constructor: (@english) ->
 
   convert: ->
-    pig_latin_words = @buffer.split(/\ +/).map (word)->
+    pig_latin_words = @english.split(/\ +/).map (word)->
       lword = word.toLowerCase()
       m = lword.match /^([^aeiou]*)(.*)$/ or throw 'error'
       if m[1].length == 0

@@ -1,6 +1,5 @@
 use strict; use warnings;
 package Pig::Latin;
-our $VERSION = '0.0.1';
 
 use Moose;
 

@@ -2,7 +2,7 @@ class Pig::Latin {
     has $.english;
 
     method convert {
-        my $pig_latin_words = [$.english.split(' ').map( -> $word {
+        my $pig_latin_words = $.english.split(/\ /).map( -> $word {
             my $lword = $word.lc;
             $lword ~~ /^(<-[aeiou]>*)(.*)$/ or die 'error';
             my $ay;
@@ -17,7 +17,7 @@ class Pig::Latin {
                 $pword = $pword.substr(0, 1).uc ~ $pword.substr(1);
             }
             $pword;
-        })];
+        });
         $pig_latin_words.join(' ');
     }
 }

@@ -68,7 +68,7 @@ else
 	g++ -o test/test-cpp test/test.cpp
 	test/test-cpp
 endif
-	@rm -fr test/test-cpp lib/Pig/__pycache__
+	@make clean
 
 lib/Pig/Latin.js: lib/Pig/Latin.coffee
 	@coffee --compile $< > $@
@@ -80,3 +80,4 @@ doc:
 
 clean purge:
 	find . -name *.pyc | xargs rm
+	rm -fr test/test-cpp lib/Pig/__pycache__ _Inline

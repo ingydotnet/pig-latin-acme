@@ -15,6 +15,19 @@ Convert English to Pig Latin
 This is an Acmeist version of a Pig Latin translation framework written in
 CafeScript that publishes to CPAN, RubyGems, PyPI and NPM.
 
+= Languages Supported
+
+* CafeScript
+* Perl (5)
+* Perl 6
+* Ruby
+* CoffeeScript
+* Node.js
+* Python (2)
+* Python 3
+* C++
+* Perl / Inline::CPP
+
 = Author
 
 Written by Ingy döt Net <ingy@ingy.net>

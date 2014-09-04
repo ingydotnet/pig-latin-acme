@@ -1,10 +1,12 @@
 + Change 'buffer' to 'english'
-- Add 'Pig latin' test to all tests
++ Add 'Pig latin' test to all tests
+- `make test` checks for language
 - Add VERSION to all implementations
-- Change 'convert' to 'encode'
+- Change 'convert' to 'to_pig_latin'
 - Support 'pig_latin' attribute
 - pkg/bin/make-{perl,python,…}
 - Add support for:
+  + Perl 6
   - PHP
   - Go
   - Tcl

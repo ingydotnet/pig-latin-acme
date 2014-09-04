@@ -54,14 +54,21 @@ else
 	python test/test.py
 endif
 	@echo
+ifeq (,$(shell which python3))
+	@echo 'XXX No Python 3 available'
+else
+	@echo -n '>>> Python 3:'
+	python3 test/test.py3
+endif
+	@echo
 ifeq (,$(shell which g++))
 	@echo 'XXX No C++ available'
 else
 	@echo -n '>>> CPP:'
 	g++ -o test/test-cpp test/test.cpp
 	test/test-cpp
-	@rm test/test-cpp
 endif
+	@rm -fr test/test-cpp lib/Pig/__pycache__
 
 lib/Pig/Latin.js: lib/Pig/Latin.coffee
 	@coffee --compile $< > $@

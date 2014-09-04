@@ -15,16 +15,16 @@ namespace Pig {
 
   class Latin {
     public:
-      Latin (std::string s) :buffer(s) {}
+      Latin (std::string s) :english(s) {}
       std::string convert();
     private:
-      std::string buffer;
+      std::string english;
   };
 
   std::string Latin::convert () {
-    
+
     // Split on single space, copy to vector named "words".
-    std::istringstream iss(buffer);
+    std::istringstream iss(english);
     std::vector<std::string> words;
     std::copy(
       std::istream_iterator<std::string>(iss),
@@ -43,7 +43,7 @@ namespace Pig {
     ) {
       output.append( " " + *it );
     }
-      
+
     return output;
   }
 
@@ -65,7 +65,7 @@ namespace Pig {
     else {
       ay = "ay";
     }
-    
+
     // Configure the piglatin string.
     std::string pword
       = lword.substr(pivot,lword.length()-pivot)

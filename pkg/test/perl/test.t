@@ -13,6 +13,6 @@ TestML->new(
 
     sub convert {
         my ($self, $english) = @_;
-        Pig::Latin->new(buffer => $english->value)->convert;
+        Pig::Latin->new(english => $english->value)->convert;
     }
 }

@@ -15,60 +15,69 @@ test: lib/Pig/Latin.js
 ifeq (,$(shell which perl))
 	@echo 'XXX No Perl available'
 else
-	@echo -n '>>> Perl:'
+	@echo -n '>>> Perl: '
 	perl test/test.pl
 endif
 	@echo
 ifeq (,$(shell which perl6))
 	@echo 'XXX No Perl 6 available'
 else
-	@echo -n '>>> Perl 6:'
+	@echo -n '>>> Perl 6: '
 	perl6 test/test.pl6
 endif
 	@echo
 ifeq (,$(shell which ruby))
 	@echo 'XXX No Ruby available'
 else
-	@echo -n '>>> Ruby:'
+	@echo -n '>>> Ruby: '
 	ruby test/test.rb
 endif
 	@echo
 ifeq (,$(shell which coffee))
 	@echo 'XXX No CoffeeScript available'
 else
-	@echo -n '>>> CoffeeScript:'
+	@echo -n '>>> CoffeeScript: '
 	coffee test/test.coffee
 endif
 	@echo
 ifeq (,$(shell which node))
 	@echo 'XXX No Node.js available'
 else
-	@echo -n '>>> Node.js:'
+	@echo -n '>>> Node.js: '
 	node test/test.js
 endif
 	@echo
 ifeq (,$(shell which python))
 	@echo 'XXX No Python available'
 else
-	@echo -n '>>> Python:'
+	@echo -n '>>> Python: '
 	python test/test.py
 endif
 	@echo
 ifeq (,$(shell which python3))
 	@echo 'XXX No Python 3 available'
 else
-	@echo -n '>>> Python 3:'
+	@echo -n '>>> Python 3: '
 	python3 test/test.py3
 endif
 	@echo
 ifeq (,$(shell which g++))
 	@echo 'XXX No C++ available'
 else
-	@echo -n '>>> CPP:'
+	@echo -n '>>> CPP: '
 	g++ -o test/test-cpp test/test.cpp
 	test/test-cpp
 endif
-	@make clean
+	@echo
+	@# Need to check for Inline::CPP
+ifeq (,$(shell which perl))
+	@echo 'XXX No Inline::CPP Perl module available'
+else
+	@echo -n '>>> Perl w/ Inline::CPP: '
+	perl test/testilcpp.pl
+endif
+	@echo
+	@make clean > /dev/null
 
 lib/Pig/Latin.js: lib/Pig/Latin.coffee
 	@coffee --compile $< > $@

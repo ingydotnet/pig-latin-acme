@@ -12,7 +12,7 @@ class Latin {
 
       $lword = strtolower($word);
 
-      if( ! preg_match('/^([^aeiou]*)(.*)$/', $lword, $matches ) ) {
+      if( ! preg_match( '/^([^aeiou]*)(.*)$/', $lword, $matches ) ) {
         throw new Exception('error');
       }
       
@@ -25,27 +25,31 @@ class Latin {
 
       $pword = $matches[2] . $matches[1] . $ay;
 
-      if( preg_match('/^[A-Z]/', $word ) ) {
-        $pword = strtoupper(substr($pword,0,1)) . substr($pword, 1);
+      if( preg_match( '/^[A-Z]/', $word ) ) {
+        $pword = strtoupper( substr( $pword, 0, 1 ) ) . substr( $pword, 1 );
       }
 
       return $pword;
     };
 
     $pig_latin_words
-      = array_map( $callback, preg_split('/\ +/', $this->english ) );
+      = array_map( $callback, preg_split( '/\ +/', $this->english ) );
 
-    return join(" ", $pig_latin_words );
+    return join( ' ', $pig_latin_words );
     
   }
 
 }
 
-$bar = new Latin("Pig latin");
-echo $bar->convert(), "\n";
-$baz = new Latin("Stringy thingy");
-echo $baz->convert(), "\n";
-$bum = new Latin("I Like Apples");
-echo $bum->convert(), "\n";
+
+
+$fizz = new Latin('Pig latin');
+echo $fizz->convert(), "\n";
+
+$bang = new Latin('Stringy thingy');
+echo $bang->convert(), "\n";
+
+$fizzbang = new Latin('I Like Apples');
+echo $fizzbang->convert(), "\n";
 
 ?>

@@ -1,7 +1,7 @@
 use strict; use warnings;
 package Pig::Latin;
 
-use Moose;
+use Mo;
 
 has english => (is => 'ro', required => 1);
 

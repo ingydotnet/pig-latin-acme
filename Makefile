@@ -23,7 +23,7 @@ ifeq (,$(shell which perl6))
 	@echo 'XXX No Perl 6 available'
 else
 	@echo -n '>>> Perl 6: '
-	perl6 test/test.pl6
+	perl6 test/test.p6
 endif
 	@echo
 ifeq (,$(shell which ruby))

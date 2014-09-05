@@ -2,14 +2,13 @@
 
 include_once 'lib/Pig/Latin.php';
 
+$pig = new Pig\Latin('Pig latin');
+echo $pig->convert(), "\n";
 
-$fizz = new Pig\Latin('Pig latin');
-echo $fizz->convert(), "\n";
+$pig = new Pig\Latin('Stringy thingy');
+echo $pig->convert(), "\n";
 
-$bang = new Pig\Latin('Stringy thingy');
-echo $bang->convert(), "\n";
-
-$fizzbang = new Pig\Latin('I Like Apples');
-echo $fizzbang->convert(), "\n";
+$pig = new Pig\Latin('I Like Apples');
+echo $pig->convert(), "\n";
 
 ?>

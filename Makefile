@@ -26,6 +26,13 @@ else
 	perl6 test/test.p6
 endif
 	@echo
+ifeq (,$(shell which php))
+	@echo 'XXX No PHP available'
+else
+	@echo -n '>>> PHP: '
+	php test/test.php
+endif
+	@echo
 ifeq (,$(shell which ruby))
 	@echo 'XXX No Ruby available'
 else

@@ -13,24 +13,87 @@ Convert English to Pig Latin
 = Description
 
 This is an Acmeist version of a Pig Latin translation framework written in
-CafeScript that publishes to CPAN, RubyGems, PyPI and NPM.
+many programming languages. The languages chosen are OO in nature (or can fake
+it easily). The code is written as literal porting translations and does not
+attempt to show off any special features of a language.
 
-= Languages Supported
+One of the implementations is in CafeScript, a language that is an evolution
+of CoffeeScript, but intends to generate equivalents in all the other
+languages (not just JavaScript).
 
+The overall goal of this project, is to make a proof of concept CafeScript
+that can generate equivalents in all the target languages and also publish
+finished packages to their respective CPAN (RubyGems, PyPI, NPM, etc)
+equivalents.
+
+This involves not only code generation, but also test, doc and packaging tool
+generation.
+
+Pig Latin translation was chosen because it is simple but not completely
+trivial. The code exercises these language features:
+
+* Classes
+* Methods
+* Construction
+* Attributes
+* Declaration
+* Assignment
+* Method calls
+* Looping / Iteration
+* Lambda Functions
+* If/Else conditionals
+* Strings
+  * String Standard Methods
+  * Concatentation
+* Arrays
+  * Array Indexing
+  * Array Standard Methods
+* Regular expression usage
+* Exceptions
+
+This seems like a decent subset to get a ball rolling.
+
+= Languages Supported So Far
+
+* C++
 * CafeScript
-* Perl (5)
-* Perl 6
-* Ruby
 * CoffeeScript
 * Node.js
+* Perl (5)
+* Perl 6
+* Perl w/ Inline::CPP
+* PHP
 * Python (2)
 * Python 3
-* C++
-* Perl / Inline::CPP
+* Ruby
+
+= Languages Desired (Pull Requests please!)
+
+* Bash
+* Go
+* Java
+* Processing
+* Scala
+* Scratch
+
+= Strategy
+
+* Hand port the algorithm to 15 - 20 languages
+  * With working tests
+* Port the CafeScript to a YAML AST
+* Generate the target languages
+  * Pass tests
+* Write a CafeScript compiler that can produce the YAML AST
+* Make TestML suite pass in all languages
+* Generate the language specific subdirs for packaging and release
+* Automate everything from top level Makefile
 
 = Author
 
-Written by Ingy döt Net <ingy@ingy.net>
+Written by:
+
+* Ingy döt Net <ingy@ingy.net>
+* David Oswald <davido@cpan.org>
 
 = Copyright & License
 

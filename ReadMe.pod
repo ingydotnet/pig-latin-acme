@@ -13,11 +13,164 @@ Pig::Latin - Convert English to Pig Latin
 =head1 Description
 
 This is an Acmeist version of a Pig Latin translation framework written in
-CafeScript that publishes to CPAN, RubyGems, PyPI and NPM.
+many programming languages. The languages chosen are OO in nature (or can fake
+it easily). The code is written as literal porting translations and does not
+attempt to show off any special features of a language.
+
+One of the implementations is in CafeScript, a language that is an evolution
+of CoffeeScript, but intends to generate equivalents in all the other
+languages (not just JavaScript).
+
+The overall goal of this project, is to make a proof of concept CafeScript
+that can generate equivalents in all the target languages and also publish
+finished packages to their respective CPAN (RubyGems, PyPI, NPM, etc)
+equivalents.
+
+This involves not only code generation, but also test, doc and packaging tool
+generation.
+
+Pig Latin translation was chosen because it is simple but not completely
+trivial. The code exercises these language features:
+
+=over
+
+=item * Classes
+
+=item * Methods
+
+=item * Construction
+
+=item * Attributes
+
+=item * Declaration
+
+=item * Assignment
+
+=item * Method calls
+
+=item * Looping / Iteration
+
+=item * Lambda Functions
+
+=item * If/Else conditionals
+
+=item * Strings
+
+=over
+
+=item * String Standard Methods
+
+=item * Concatentation
+
+=back
+
+=item * Arrays
+
+=over
+
+=item * Array Indexing
+
+=item * Array Standard Methods
+
+=back
+
+=item * Regular expression usage
+
+=item * Exceptions
+
+=back
+
+This seems like a decent subset to get a ball rolling.
+
+=head1 Languages Supported So Far
+
+=over
+
+=item * C++
+
+=item * CafeScript
+
+=item * CoffeeScript
+
+=item * Node.js
+
+=item * Perl (5)
+
+=item * Perl 6
+
+=item * Perl w/ Inline::CPP
+
+=item * PHP
+
+=item * Python (2)
+
+=item * Python 3
+
+=item * Ruby
+
+=back
+
+=head1 Languages Desired (Pull Requests please!)
+
+=over
+
+=item * Bash
+
+=item * Go
+
+=item * Java
+
+=item * Processing
+
+=item * Scala
+
+=item * Scratch
+
+=back
+
+=head1 Strategy
+
+=over
+
+=item * Hand port the algorithm to 15 - 20 languages
+
+=over
+
+=item * With working tests
+
+=back
+
+=item * Port the CafeScript to a YAML AST
+
+=item * Generate the target languages
+
+=over
+
+=item * Pass tests
+
+=back
+
+=item * Write a CafeScript compiler that can produce the YAML AST
+
+=item * Make TestML suite pass in all languages
+
+=item * Generate the language specific subdirs for packaging and release
+
+=item * Automate everything from top level Makefile
+
+=back
 
 =head1 Author
 
-Written by Ingy döt Net <ingy@ingy.net>
+Written by:
+
+=over
+
+=item * Ingy döt Net <ingy@ingy.net>
+
+=item * David Oswald <davido@cpan.org>
+
+=back
 
 =head1 Copyright & License
 

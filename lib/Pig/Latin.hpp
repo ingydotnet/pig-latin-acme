@@ -1,4 +1,3 @@
-
 #ifndef _PIG_LATIN
 #define _PIG_LATIN
 
@@ -87,4 +86,3 @@ namespace Pig {
 } // End of Pig namespace.
 
 #endif
-

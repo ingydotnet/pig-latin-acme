@@ -1,0 +1,6 @@
+use lib 'lib'
+use Pig::Latin
+
+say Pig::Latin(english: 'Pig Latin').convert
+say Pig::Latin(english: 'Stringy thingy').convert
+say Pig::Latin(english: 'I Like Apples').convert

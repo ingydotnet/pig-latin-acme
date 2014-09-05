@@ -81,7 +81,7 @@ ifeq (,$(shell which perl))
 	@echo 'XXX No Inline::CPP Perl module available'
 else
 	@echo -n '>>> Perl w/ Inline::CPP: '
-	perl test/testilcpp.pl
+	perl test/test.inline-cpp.pl
 endif
 	@echo
 	@make clean > /dev/null

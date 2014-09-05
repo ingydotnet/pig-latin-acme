@@ -92,7 +92,7 @@ lib/Pig/Latin.js: lib/Pig/Latin.coffee
 update: doc
 
 doc:
-	swim --to=pod --wrap=1 doc/Pig/Latin.swim > ReadMe.pod
+	swim --to=pod --complete=1 --wrap=1 doc/Pig/Latin.swim > ReadMe.pod
 
 clean purge:
 	find . -name *.pyc | xargs rm

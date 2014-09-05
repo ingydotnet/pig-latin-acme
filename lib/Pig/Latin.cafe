@@ -1,6 +1,6 @@
 Class Pig::Latin
 
-\@ @english
+@english
 
 \convert
   pig-latin-words = @english.split(/\ +/).map \(word)

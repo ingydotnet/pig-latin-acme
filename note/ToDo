@@ -1,12 +1,21 @@
 + Change 'buffer' to 'english'
 + Add 'Pig latin' test to all tests
-- `make test` checks for language
++ `make test` checks for language
+- Add test.html for .js
+- Port to YAML
+- Generate the backends from YAML
 - Add VERSION to all implementations
 - Change 'convert' to 'to_pig_latin'
 - Support 'pig_latin' attribute
 - pkg/bin/make-{perl,python,…}
 - Add support for:
   + Perl 6
-  - PHP
+  + PHP
+  - Bash
   - Go
   - Tcl
+  - Java
+  - Scala
+  - Scratch
+  - Processing
+- Reverse engineer Scratch

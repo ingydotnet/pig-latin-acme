@@ -2,14 +2,15 @@
 
 int main() {
 
-  Pig::Latin pig1("Pig latin");
-  std::cout << pig1.convert() << "\n";
 
-  Pig::Latin pig2("Stringy thingy");
-  std::cout << pig2.convert() << "\n";
+  Pig::Latin pig("Pig latin");
+  std::cout << pig.convert() << "\n";
 
-  Pig::Latin pig3("I Like Apples");
-  std::cout << pig3.convert() << "\n";
+  pig = Pig::Latin("Stringy thingy");
+  std::cout << pig.convert() << "\n";
+
+  pig = Pig::Latin("I Like Apples");
+  std::cout << pig.convert() << "\n";
 
   return 0;
 }

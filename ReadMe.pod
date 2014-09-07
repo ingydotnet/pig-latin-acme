@@ -42,6 +42,16 @@ trivial. The code exercises these language features:
 
 =over
 
+=item * Libraries
+
+=over
+
+=item * loadI<use>require
+
+=item * LIB path manipulation
+
+=back
+
 =item * Classes
 
 =item * Methods
@@ -133,6 +143,8 @@ This seems like a decent subset to get a ball rolling.
 =item * Scala
 
 =item * Scratch
+
+=item * Tcl
 
 =back
 

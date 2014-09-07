@@ -32,6 +32,9 @@ generation.
 Pig Latin translation was chosen because it is simple but not completely
 trivial. The code exercises these language features:
 
+* Libraries
+  * load/use/require
+  * LIB path manipulation
 * Classes
 * Methods
 * Construction

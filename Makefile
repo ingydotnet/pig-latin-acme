@@ -84,6 +84,14 @@ else
 	perl test/test.inline-cpp.pl
 endif
 	@echo
+ifeq (,$(shell which scala))
+	@echo 'XXX No Scala available'
+else
+	@test -n '>>> Scala: '
+	scalac lib/Pig/Latin.scala test/test.scala -d test/
+	scala -cp test/ Pig.Test
+endif
+	@echo
 	@make clean > /dev/null
 
 lib/Pig/Latin.js: lib/Pig/Latin.coffee
@@ -96,4 +104,4 @@ doc:
 
 clean purge:
 	find . -name *.pyc | xargs rm
-	rm -fr test/test-cpp lib/Pig/__pycache__ _Inline
+	rm -fr test/test-cpp lib/Pig/__pycache__ _Inline test/Pig

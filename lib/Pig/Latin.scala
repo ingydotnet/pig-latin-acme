@@ -1,4 +1,4 @@
-package pig
+package Pig
 
 case class Latin(text: String) {
 	def convert: String = {

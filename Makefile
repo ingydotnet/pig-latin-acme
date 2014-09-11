@@ -89,6 +89,12 @@ endif
 lib/Pig/Latin.js: lib/Pig/Latin.coffee
 	@coffee --compile $< > $@
 
+build/Latin.pm: build
+	./bin/lingy --to=pm lib/Pig/Latin.ly.yaml
+
+build:
+	mkdir $@
+
 update: doc
 
 doc:

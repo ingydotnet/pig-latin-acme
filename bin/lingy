@@ -1,0 +1,112 @@
+#!/usr/bin/env perl
+
+package Lingy::Command;
+use Mo;
+use YAML::XS;
+use Getopt::Long;
+
+sub XXX {
+    die Dump @_;
+}
+
+my $ext_to_class = {
+    pm => 'Lingy::Perl5',
+};
+
+sub run {
+    my ($self) = @_;
+    $self->get_opts;
+    $self->load_lingy_yaml;
+    $self->convert_lingy;
+    $self->write_output;
+}
+
+sub get_opts {
+    my ($self) = @_;
+    local @ARGV = @{$self->{args}};
+    GetOptions(
+        'to=s' => \$self->{to},
+    );
+    die '--to= option is required'
+        unless defined $self->{to};
+    die "Invalid or unsupported value '$self->{to}' for --to option"
+        unless defined $ext_to_class->{$self->{to}};
+    $self->{in} = shift(@ARGV) || '-';
+    die "Invalid input file '$self->{in}'. Should end in '.lingy.yaml'"
+        unless $self->{in} eq '-' or $self->{in} =~ /\.l(ing)?y\.y(a)?ml$/;
+    die "Unknown arguments '@ARGV'"
+        unless @ARGV == 0;
+}
+
+sub load_lingy_yaml {
+    my ($self) = @_;
+    my $yaml = $self->read_input;
+    $self->{ast} = YAML::XS::Load($self->{input});
+}
+
+sub read_input {
+    my ($self) = @_;
+    my $in = $self->{in};
+    local $/;
+    if ($in eq '-') {
+        $self->{input} = <>;
+    }
+    else {
+        open my $fh, $in
+            or die "Can't open '$in' for input";
+        $self->{input} = <$fh>;
+        close $fh;
+    }
+}
+
+sub write_output {
+    my ($self) = @_;
+    print $self->{out};
+}
+
+sub convert_lingy {
+    my ($self) = @_;
+    $self->{out} = '';
+    my $class = $ext_to_class->{$self->{to}};
+    $self->{out} = $class->new(
+        ast => $self->{ast},
+    )->generate;
+}
+
+package Lingy::Perl5;
+use Mo;
+
+sub generate {
+    my ($self) = @_;
+    $self->head;
+    for my $class (@{$self->{ast}{class}}) {
+        $self->class($class);
+    }
+    $self->foot;
+}
+
+sub class {
+    my ($self, $a) = @_;
+    my $name = $a->{name};
+    $name =~ s/\./::/g;
+    $self->{out} .= <<"...";
+package $name;
+use Moose;
+
+...
+}
+
+sub head {
+    my ($self) = @_;
+}
+
+sub foot {
+    my ($self) = @_;
+    $self->{out} .= <<'...';
+1;
+...
+}
+
+package main;
+
+Lingy::Command->new(args => \@ARGV)->run;

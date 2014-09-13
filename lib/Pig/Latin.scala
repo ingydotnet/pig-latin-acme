@@ -14,7 +14,6 @@ case class Latin(text: String) {
 				(if (word(0).isUpper) pword.capitalize else pword)
 			case _ => throw new IllegalArgumentException(s"Word '${word}' is invalid")
 		}
-		
 		words mkString " "
 	}
 }

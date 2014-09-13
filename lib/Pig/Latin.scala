@@ -12,7 +12,7 @@ case class Latin(text: String) {
 				val ay = if (cons.isEmpty()) "way" else "ay"
 				val pword = rest + cons + ay
 				(if (word(0).isUpper) pword.capitalize else pword)
-			case _ => throw new IllegalArgumentException(s"Word '${word}' is invalid")
+			case _ => throw new IllegalArgumentException("Word '${word}' is invalid")
 		}
 		words mkString " "
 	}

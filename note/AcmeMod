@@ -1,0 +1,45 @@
+== Constructs
+
+- class
+- constructor
+- attributes
+- method (w/ args)
+- if / else
+- while / for
+- string / number / hash / array
+- regex (capture)
+- variables / assignment
+- throw / exception
+
+== Languages
+
+- Perl
+- Python
+- Ruby
+- Node
+- Perl 6
+- Go
+- PHP
+- Tcl
+
+- YAML
+- CafeScript / UniScript
+
+== Projects
+
+- Pig::Latin
+- Opt::Parser
+- Pegex::Parser
+
+== Pig Latin
+
+  use Pig::Latin;
+  Pig::Latin->new(rot13 => false, upper_case => true)->convert("I love Pig Latin!");
+
+== PairUp
+
+== Meta Projects
+
+- BPAN
+- Lola
+

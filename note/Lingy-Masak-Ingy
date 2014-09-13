@@ -1,0 +1,87 @@
+masak	ingy: re http://irclog.perlgeek.de/perl6/2014-09-05#i_9305944 -- when a language declares by assignment, there's no way to distinguish `my $x = 1; sub { $x = 2 }` from `my $x = 1; sub { my $x = 2 }`, and so the language has to choose (usually the latter). I've seen this decision cause untold head-scratchers, surprise, and hardship in (e.g.) Python and AngularJS.
+masak	Python 3 introduces `nonlocal` as a way to get the former semantics. but then community-suggests that "you don't really want to do that". :/
+ingy	masak: I'm not sure I agreee
+ingy	or at least that it's going to be a problem
+ingy	I could make a set of test cases
+ingy	And as I said, assignment is just the default decl
+ *	ingy tests in CS
+masak	oh, you're free to agree or disagree ;)
+masak	I'm just saying I see that semantics causing actual pain in a way explicit declarations don't.
+masak	there are plenty of ways to decide that declaration-by-assignment is still the right thing to do. for example, by considering the sum effort involved in declaring lexical variables to be worse than the occasional bug caused by implicitly mis-declaring one.
+ingy	nod
+masak	as for me, though, I've come to really really appreciate explicit declarations. they form a beautiful static modek in the program, and they frequently catch thinkos for me which otherwise might have escaped into live code as unintended declarations.
+ingy	masak: so CafeScript is syntax and L'Ingy is the (syntaxless) language.
+ingy	one sec
+masak	colomon: it's before noon, yes.
+masak	there's some sense in which implicit syntax looks like less work, but it ends up causing trouble when refactoring.
+ingy	masak: possibly :)
+masak	a bit like having the redundancy of indentation and explicit braces on blocks tends to be a good thing.
+ingy	masak: https://github.com/ingydotnet/pig-latin-acme/blob/master/lib/Pig/Latin.ly.yaml is the raw L'Ingy port
+ *	masak looks
+ingy	that I just made
+ingy	it is close to the compilation unit (AST) of https://github.com/ingydotnet/pig-latin-acme/blob/master/lib/Pig/Latin.cafe
+masak	*nod*
+ingy	and all the vars are scoped and typed
+ingy	so I can swap syntaxen (theoretically) to meet issues
+ingy	Cafe is admittedly pushing full-on lean
+ingy	masak: you'll like: https://gist.github.com/7b86c66589fd5b67feab
+ingy	I was reading p6OO doc and started refactoring :)
+ingy	note line 20
+ingy	no comma after "x: "
+ingy	that's because commas are optional following a literal in a list
+ingy	[1 2 3 4]
+ingy	stolen from audreyt's #1 fav lang LiveScript
+masak	seems a big perverse from a p6 perspective :)
+masak	bit*
+masak	(as we typically reserve TTIAR for either special forms or parse errors)
+ingy	I have a lightning talk that asserts that , ; ( ) { } have pretty much identical meanings in all modern languages. they should always be supported, and semantically DTRT, and always be optional :)
+masak	reminds me of JS's optional semicolons, for some reason.
+masak	ingy: I also note that you opted for *neither* braces nor indentation to indicate nesting.
+ingy	perl6 feels perverse from the PoV of porting between other common langs
+ingy	?
+masak	everything's at indent level 0.
+ingy	you mean I opted both either
+ingy	oh
+masak	well, in your example I see neither.
+masak	what if I want nested classes?
+masak	or nesting of something else?
+ingy	a 'Module' is Class*
+ingy	so class ends at next class
+masak	I figured. that's why you need a class main.
+ingy	that's one thing from p5 I won't give up
+ingy	but still ♥ indentation
+ingy	open code from before first class is also in main
+ingy	er Main
+ingy	I just didn't want to break the p6 code order
+masak	ingy: I find this discussion interesting in that it brings out language design preferences I didn't know I had, by looking at what you have and figuring out why I don't like it. ingy++ :)
+ingy	It will be pretty cool to see how Cafe beats up on P6 (and vice versa)
+ingy	backhanded compliment touché :P
+masak	not meant as a slight in any way
+ingy	people like what they are used to
+masak	at least those who stick with what they like :P
+ingy	I find CoffeeScript to the most delightful syntax
+masak	oh augh :P
+ingy	well, until I realized it could be better
+ingy	p6 is a fountainhead of great ideas
+masak	ingy: I think it's weird that your model has `main` as a class, since it has neither attributes, methods, or instances. just mainline code.
+ingy	masak: to be honest, Cafe's dream is only OO/Class/Module singularity
+ingy	one programs in P6
+ingy	one writes modules in Lingy/Cafe
+ingy	if one is Acmeist (wants ideas (modules) to go beyond one's tiny language domain)
+ingy	so the 'main' thing is not well thought out yet
+masak	sir, I wish you good luck on your ambitious Acmeist quest.
+ingy	but it's probably inevitable
+ingy	masak: it's the lonliest path least traveled, my good friend!
+ingy	but it's the only path that calls out to my soul…
+ingy	I had all these ideas before coffee. coffee was a huge shot in the arm though.
+btyler	is it possible to use NativeCall with static libs?
+ingy	and coffee taught me that the sugar can be richer than the target
+ingy	and take the best ideas from great langs
+masak	*nod*
+masak	I give you that, CoffeeScript has had a huge influence by example.
+ingy	including the best of the greats, Perl6
+btyler	I'm playing around with bindings for discount, the markdown compiler, but nativecall either looks for .dylib, or, when I specify "libmarkdown.a" can't find that
+JimmyZ	.oO(someone want ColaScript...)
+ingy	vendethiel- I believe was/is a huge backer of LiveScript (aka CoffeeScript++; aka FunctionalCoffeeScript)
+ingy	vendethiel-: do you hear me, man?!
+ *	masak should take a closer look at LiveScript

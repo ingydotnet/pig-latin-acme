@@ -69,6 +69,7 @@ This seems like a decent subset to get a ball rolling.
 * Python (2)
 * Python 3
 * Ruby
+* Scala
 
 = Languages Desired (Pull Requests please!)
 
@@ -76,7 +77,6 @@ This seems like a decent subset to get a ball rolling.
 * Go
 * Java
 * Processing
-* Scala
 * Scratch
 * Tcl
 

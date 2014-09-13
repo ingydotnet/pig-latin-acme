@@ -126,6 +126,8 @@ This seems like a decent subset to get a ball rolling.
 
 =item * Ruby
 
+=item * Scala
+
 =back
 
 =head1 Languages Desired (Pull Requests please!)
@@ -139,8 +141,6 @@ This seems like a decent subset to get a ball rolling.
 =item * Java
 
 =item * Processing
-
-=item * Scala
 
 =item * Scratch
 

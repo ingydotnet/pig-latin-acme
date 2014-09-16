@@ -28,6 +28,17 @@ help:
 
 test: $(ALL_TEST) clean
 
+### C++ ###
+test-cpp:
+ifeq (,$(shell which g++))
+	@echo 'XXX No C++ available'
+else
+	@echo -n '>>> C++: '
+	g++ -o test/test-cpp test/test.cpp
+	test/test-cpp
+endif
+	@echo
+
 ### CoffeeScript ###
 test-coffee:
 ifeq (,$(shell which coffee))
@@ -35,17 +46,6 @@ ifeq (,$(shell which coffee))
 else
 	@echo -n '>>> CoffeeScript: '
 	coffee test/test.coffee
-endif
-	@echo
-
-### C++ ###
-test-cpp:
-ifeq (,$(shell which g++))
-	@echo 'XXX No C++ available'
-else
-	@echo -n '>>> CPP: '
-	g++ -o test/test-cpp test/test.cpp
-	test/test-cpp
 endif
 	@echo
 
@@ -64,8 +64,12 @@ test-perl5:
 ifeq (,$(shell which perl))
 	@echo 'XXX No Perl available'
 else
+ifneq (,$(shell perl -e 'require Mo' 2>&1))
+	@echo 'XXX Perl 5 Mo module required'
+else
 	@echo -n '>>> Perl: '
 	perl test/test.pl
+endif
 endif
 	@echo
 
@@ -75,8 +79,12 @@ test-perl5-inline-cpp:
 ifeq (,$(shell which perl))
 	@echo 'XXX No Inline::CPP Perl module available'
 else
+ifneq (,$(shell perl -e 'require Inline::CPP' 2>&1))
+	@echo 'XXX Perl 5 Inline::CPP module required'
+else
 	@echo -n '>>> Perl w/ Inline::CPP: '
 	perl test/test.inline-cpp.pl
+endif
 endif
 	@echo
 
@@ -135,9 +143,13 @@ test-scala:
 ifeq (,$(shell which scala))
 	@echo 'XXX No Scala available'
 else
+ifeq (,$(shell scalac -version 2>&1 | grep '2\.1'))
+	@echo 'XXX Scala version 2.10 or higher required'
+else
 	@echo -n '>>> Scala: '
 	scalac lib/Pig/Latin.scala test/test.scala -d test/
 	scala -cp test/ Pig.Test
+endif
 endif
 	@echo
 
@@ -157,5 +169,5 @@ doc:
 	swim --to=pod --complete=1 --wrap=1 doc/Pig/Latin.swim > ReadMe.pod
 
 clean purge:
-	find . -name *.pyc | xargs rm
-	rm -fr test/test-cpp lib/Pig/__pycache__ _Inline test/Pig
+	@find . -name *.pyc | xargs rm
+	@rm -fr test/test-cpp lib/Pig/__pycache__ _Inline test/Pig

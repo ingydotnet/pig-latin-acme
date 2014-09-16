@@ -1,7 +1,16 @@
+###
+This is the canonical Pig::Latin module/class, written in the Cafe syntax of
+the Lingy language. From this source, all the other programming language ports
+of this code will be generated.
+###
+
+# Start class definition:
 Class Pig::Latin
 
+# Class attributes:
 @english
 
+# Instance method `convert()`
 \convert
   pig-latin-words = @english.split(/\ +/).map \(word)
     lword = word.lower

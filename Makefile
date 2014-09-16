@@ -1,6 +1,7 @@
 .PHONY: doc test
 
 ALL := \
+    bash \
     cpp \
     coffee \
     node \
@@ -27,6 +28,16 @@ help:
 	@echo ''
 
 test: $(ALL_TEST) clean
+
+### Bash ###
+test-bash:
+ifeq (,$(shell which bash))
+	@echo 'XXX No Bash available'
+else
+	@echo -n '>>> Bash: '
+	bash test/test.bash
+endif
+	@echo
 
 ### C++ ###
 test-cpp:

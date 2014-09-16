@@ -1,5 +1,20 @@
 .PHONY: doc test
 
+ALL := \
+    cpp \
+    coffee \
+    node \
+    perl5 \
+    perl5-inline-cpp \
+    perl6 \
+    php \
+    python2 \
+    python3 \
+    ruby \
+    scala \
+
+ALL_TEST := $(ALL:%=test-%)
+
 default: help
 
 help:
@@ -11,35 +26,10 @@ help:
 	@echo '    clean   - Clean up build files'
 	@echo ''
 
-test: lib/Pig/Latin.js
-ifeq (,$(shell which perl))
-	@echo 'XXX No Perl available'
-else
-	@echo -n '>>> Perl: '
-	perl test/test.pl
-endif
-	@echo
-ifeq (,$(shell which perl6))
-	@echo 'XXX No Perl 6 available'
-else
-	@echo -n '>>> Perl 6: '
-	perl6 test/test.p6
-endif
-	@echo
-ifeq (,$(shell which php))
-	@echo 'XXX No PHP available'
-else
-	@echo -n '>>> PHP: '
-	php test/test.php
-endif
-	@echo
-ifeq (,$(shell which ruby))
-	@echo 'XXX No Ruby available'
-else
-	@echo -n '>>> Ruby: '
-	ruby test/test.rb
-endif
-	@echo
+test: $(ALL_TEST) clean
+
+### CoffeeScript ###
+test-coffee:
 ifeq (,$(shell which coffee))
 	@echo 'XXX No CoffeeScript available'
 else
@@ -47,27 +37,9 @@ else
 	coffee test/test.coffee
 endif
 	@echo
-ifeq (,$(shell which node))
-	@echo 'XXX No Node.js available'
-else
-	@echo -n '>>> Node.js: '
-	node test/test.js
-endif
-	@echo
-ifeq (,$(shell which python))
-	@echo 'XXX No Python available'
-else
-	@echo -n '>>> Python: '
-	python test/test.py
-endif
-	@echo
-ifeq (,$(shell which python3))
-	@echo 'XXX No Python 3 available'
-else
-	@echo -n '>>> Python 3: '
-	python3 test/test.py3
-endif
-	@echo
+
+### C++ ###
+test-cpp:
 ifeq (,$(shell which g++))
 	@echo 'XXX No C++ available'
 else
@@ -76,6 +48,29 @@ else
 	test/test-cpp
 endif
 	@echo
+
+### Node.js ###
+test-node: lib/Pig/Latin.js
+ifeq (,$(shell which node))
+	@echo 'XXX No Node.js available'
+else
+	@echo -n '>>> Node.js: '
+	node test/test.js
+endif
+	@echo
+
+### Perl 5 ###
+test-perl5:
+ifeq (,$(shell which perl))
+	@echo 'XXX No Perl available'
+else
+	@echo -n '>>> Perl: '
+	perl test/test.pl
+endif
+	@echo
+
+### Perl 5 w/ Inline::CPP ###
+test-perl5-inline-cpp:
 	@# Need to check for Inline::CPP
 ifeq (,$(shell which perl))
 	@echo 'XXX No Inline::CPP Perl module available'
@@ -84,6 +79,59 @@ else
 	perl test/test.inline-cpp.pl
 endif
 	@echo
+
+### Perl 6 ###
+test-perl6:
+ifeq (,$(shell which perl6))
+	@echo 'XXX No Perl 6 available'
+else
+	@echo -n '>>> Perl 6: '
+	perl6 test/test.p6
+endif
+	@echo
+
+### PHP ###
+test-php:
+ifeq (,$(shell which php))
+	@echo 'XXX No PHP available'
+else
+	@echo -n '>>> PHP: '
+	php test/test.php
+endif
+	@echo
+
+### Python (2) ###
+test-python2:
+ifeq (,$(shell which python))
+	@echo 'XXX No Python available'
+else
+	@echo -n '>>> Python: '
+	python test/test.py
+endif
+	@echo
+
+### Python (3) ###
+test-python3:
+ifeq (,$(shell which python3))
+	@echo 'XXX No Python 3 available'
+else
+	@echo -n '>>> Python 3: '
+	python3 test/test.py3
+endif
+	@echo
+
+### Ruby ###
+test-ruby:
+ifeq (,$(shell which ruby))
+	@echo 'XXX No Ruby available'
+else
+	@echo -n '>>> Ruby: '
+	ruby test/test.rb
+endif
+	@echo
+
+### Scala ###
+test-scala:
 ifeq (,$(shell which scala))
 	@echo 'XXX No Scala available'
 else
@@ -92,8 +140,8 @@ else
 	scala -cp test/ Pig.Test
 endif
 	@echo
-	@make clean > /dev/null
 
+#------------------------------------------------------------------------------
 lib/Pig/Latin.js: lib/Pig/Latin.coffee
 	@coffee --compile $< > $@
 

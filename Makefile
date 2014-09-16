@@ -87,7 +87,7 @@ endif
 ifeq (,$(shell which scala))
 	@echo 'XXX No Scala available'
 else
-	@test -n '>>> Scala: '
+	@echo -n '>>> Scala: '
 	scalac lib/Pig/Latin.scala test/test.scala -d test/
 	scala -cp test/ Pig.Test
 endif

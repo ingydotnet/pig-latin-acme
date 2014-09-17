@@ -1,3 +1,7 @@
+/*
+ * Go port of PigLatin in an OO style.
+ */
+
 package PigLatin
 
 import "strings"
@@ -7,13 +11,12 @@ type New struct {
   English string
 }
 
-func Convert(self New) string {
+func (self *New) Convert() string {
   pig_latin_words := []string{}
   words := strings.Split(self.English, " ")
   for _, word := range words {
     lword := strings.ToLower(word)
-    re := regexp.MustCompile("^([^aeiou]*)(.*)$")
-    m := re.FindStringSubmatch(lword)
+    m := regexp.MustCompile("^([^aeiou]*)(.*)$").FindStringSubmatch(lword)
     ay := ""
     if len(m[1]) == 0 {
       ay = "way"
@@ -21,9 +24,7 @@ func Convert(self New) string {
       ay = "ay"
     }
     pword := m[2] + m[1] + ay
-    re2 := regexp.MustCompile("^[A-Z]")
-    m2 := re2.MatchString(word)
-    if m2 {
+    if regexp.MustCompile("^[A-Z]").MatchString(word) {
         pword = strings.ToUpper(pword[0:1]) + pword[1:]
     }
     pig_latin_words = append(pig_latin_words, pword)

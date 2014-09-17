@@ -1,5 +1,5 @@
 Pig.Latin:convert() {
-  local words=(%%%english) pig_latin_words=()
+  local words=(%%english) pig_latin_words=()
   local word lword pword ay
   for word in ${words[@]}; do
     lword=$(echo $word | tr '[:upper:]' '[:lower:]')
@@ -25,7 +25,7 @@ Pig.Latin.new() {
   local symbol=$1 english="$2"
   printf -v "Pig_Latin__${symbol}__english" "$english"
   func=$(type Pig.Latin:convert | tail -n+2)
-  func="${func//%%%/\$Pig_Latin__${symbol}__}"
+  func="${func//%%/\$Pig_Latin__${symbol}__}"
   func="${func/Pig.Latin:/$symbol.}"
   eval "$func"
 }

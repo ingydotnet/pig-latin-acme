@@ -4,6 +4,7 @@ ALL := \
     bash \
     cpp \
     coffee \
+    go \
     node \
     perl5 \
     perl5-inline-cpp \
@@ -57,6 +58,16 @@ ifeq (,$(shell which coffee))
 else
 	@echo -n '>>> CoffeeScript: '
 	coffee test/test.coffee
+endif
+	@echo
+
+### Go ###
+test-go:
+ifeq (,$(shell which go))
+	@echo 'XXX No Go available'
+else
+	@echo -n '>>> Go: '
+	go run test/test.go
 endif
 	@echo
 

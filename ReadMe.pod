@@ -112,6 +112,8 @@ This seems like a decent subset to get a ball rolling.
 
 =item * CoffeeScript
 
+=item * Go
+
 =item * Node.js
 
 =item * Perl 5
@@ -135,8 +137,6 @@ This seems like a decent subset to get a ball rolling.
 =head1 Languages Desired (Pull Requests please!)
 
 =over
-
-=item * Go
 
 =item * Java
 

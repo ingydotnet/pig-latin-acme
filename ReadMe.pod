@@ -114,6 +114,8 @@ This seems like a decent subset to get a ball rolling.
 
 =item * Go
 
+=item * Lingy
+
 =item * Node.js
 
 =item * Perl 5
@@ -127,6 +129,8 @@ This seems like a decent subset to get a ball rolling.
 =item * Python (2)
 
 =item * Python 3
+
+=item * Racket
 
 =item * Ruby
 

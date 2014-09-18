@@ -63,6 +63,7 @@ This seems like a decent subset to get a ball rolling.
 * CafeScript
 * CoffeeScript
 * Go
+* Lingy
 * Node.js
 * Perl 5
 * Perl 5 w/ Inline::CPP
@@ -70,6 +71,7 @@ This seems like a decent subset to get a ball rolling.
 * PHP
 * Python (2)
 * Python 3
+* Racket
 * Ruby
 * Scala
 

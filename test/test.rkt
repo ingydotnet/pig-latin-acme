@@ -1,8 +1,8 @@
 #lang racket
 (require "../lib/Pig/Latin.rkt")
 
-(define (test text)
-  (displayln (send (new pig-latin% [text text]) convert)))
+(define (test english)
+  (displayln (send (new pig-latin% [english english]) convert)))
 
 (test "Pig latin")
 (test "Stringy thingy")

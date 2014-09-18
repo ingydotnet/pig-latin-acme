@@ -1,0 +1,19 @@
+= Pig Latin Spec
+
+This document describes the concepts that are being attempted to be encoded in
+the various ports of the Pig Latin framework.
+
+== Concepts
+
+- define a module
+- import a module
+- class
+  - 2 part name
+- attributes
+- instantiation
+- string literals
+- string variables
+- string functions
+  - split
+    - on regex
+    - default `/\ +/`

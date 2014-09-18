@@ -6,7 +6,8 @@ Pig.Latin:convert() {
   local words=(%%english) pig_latin_words=()
   local word lword pword ay
   for word in ${words[@]}; do
-    [[ $(echo $word | tr '[:upper:]' '[:lower:]') =~ ^([^aeiou]*)(.*)$ ]] ||
+    lword=$(echo $word | tr '[:upper:]' '[:lower:]')
+    [[ $lword =~ ^([^aeiou]*)(.*)$ ]] ||
       die 'error'
     [ -z "${BASH_REMATCH[1]}" ] && ay=way || ay=ay
     pword=${BASH_REMATCH[2]}${BASH_REMATCH[1]}$ay

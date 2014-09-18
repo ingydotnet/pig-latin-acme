@@ -2,9 +2,8 @@
 # Emulate OO in Bash
 #------------------------------------------------------------------------------
 
-Class() {
-  :
-}
+# TODO Make a generic class constructor
+Class() { :;}
 
 Pig.Latin.new() {
   local symbol=$1 english="$2"
@@ -16,4 +15,3 @@ Pig.Latin.new() {
 }
 
 die() { echo "$@" >&2; exit 1; }
-

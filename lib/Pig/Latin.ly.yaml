@@ -8,41 +8,27 @@ anon:
 - &001
   type: Func
   args: [word]
-  vars:
-    word: Str
-    lword: Str
-    match: Str
-    ay: Str
-    pword: Str
+  vars: { word: Str, lword: Str, match: Str, ay: Str, pword: Str }
   code:
-  - [=lword, $word, .lower]
-  - - or
-    - [=match, [=~, $lword, '/^([^aeiou]*)(.*)$']]
-    - [-!!!, -error]
+  - [lword, =, [$lword, .lower]]
+  - - [match, =, $lword, =~, '/^([^aeiou]*)(.*)$']
+    - <or>
+    - [<!!!>, -error]
+  - [ay, ==, [tern, [$match/1, ==, 0], -way, -ay]]
+  - [pword, =, [+, $match/2, $match/1, $ay]]
   - - if
-    - [==, $match/1, 0]
-    - [=ay, -way]
-    - [=ay, -ay]
-  - [=pword, [+, $m/2, $m/1, $ay]]
-  - - if
-    - [=~, $word, '/^[A-Z]']
-    - [=pword, [+, [$pword/0, .upper], $pword/1]]
-  - [return, $pword]
+    - [$word, =~, '/^[A-Z]']
+    - [[$pword/0, .upper], +, $pword/1]
+    - $pword
 class:
 - name: Pig.Latin
-  attr:
-  - english
+  attr: [english]
   vars:
     english: Str
     convert:
       type: Method
       args: []
       code:
-      - [=pig-latin-words,
-          -@english,
-          [.split, /\ +],
-          [.map, *001]
-        ]
-      - [return, [$pig-latin-words, [.join, '- ']]]
-      vars:
-        pig-latin-words: Array/Str
+      - [pig-latin-words, =, -@english, [.split, /\ +], [.map, *001]]
+      - [$pig-latin-words, [.join, '- ']]
+      vars: { pig-latin-words: Array/Str }

@@ -12,28 +12,22 @@ namespace Pig {
 
       $callback = function($word) {
         $lword = strtolower($word);
-        if (! preg_match( '/^([^aeiou]*)(.*)$/', $lword, $matches)) {
+        if (! preg_match( '/^([^aeiou]*)(.*)$/', $lword, $match)) {
           throw new Exception('error');
         }
-
-        if (strlen($matches[1]) == 0) {
-          $ay = 'way';
+        $ay = (strlen($match[1]) == 0) ? 'way' : 'ay';
+        $pword = $match[2] . $match[1] . $ay;
+        if (preg_match( '/^[A-Z]/', $word)) {
+          return strtoupper(substr($pword, 0, 1)) . substr($pword, 1);
         }
         else {
-          $ay = 'ay';
+          return $pword;
         }
-
-        $pword = $matches[2] . $matches[1] . $ay;
-        if (preg_match( '/^[A-Z]/', $word)) {
-          $pword = strtoupper(substr($pword, 0, 1)) . substr($pword, 1);
-        }
-
-        return $pword;
       };
 
       $pig_latin_words = array_map(
         $callback,
-        preg_split( '/\ +/', $this->english)
+        preg_split('/\ +/', $this->english)
       );
       return join(' ', $pig_latin_words);
     }

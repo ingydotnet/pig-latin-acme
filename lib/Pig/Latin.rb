@@ -2,23 +2,19 @@ class Pig; end
 class Pig::Latin
   def initialize english
     @english = english
-    @state = 'english'
   end
 
   def convert
     pig_latin_words = @english.split(/ +/).map { |word|
       lword = word.downcase
-      m = lword.match(/^([^aeiou]*)(.*)$/) or throw 'error'
-      if m[1].length == 0
-        ay = 'way'
-      else
-        ay = 'ay'
-      end
-      pword = m[2] + m[1] + ay
+      match = lword.match(/^([^aeiou]*)(.*)$/) or throw 'error'
+      ay = match[1].length == 0 ? 'way' : 'ay'
+      pword = match[2] + match[1] + ay
       if word.match /^[A-Z]/
-        pword = pword[0].upcase + pword[1..-1]
+        pword[0].upcase + pword[1..-1]
+      else
+        pword
       end
-      pword
     }
     pig_latin_words.join ' '
   end

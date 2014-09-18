@@ -30,7 +30,7 @@ help:
 	@echo '    clean   - Clean up build files'
 	@echo ''
 
-test: $(ALL_TEST) clean
+test: $(ALL_TEST) cleanup
 
 ### Bash ###
 test-bash:
@@ -211,7 +211,7 @@ update: doc
 doc:
 	swim --to=pod --complete=1 --wrap=1 doc/Pig/Latin.swim > ReadMe.pod
 
-clean purge:
+clean purge cleanup:
 	@rm -fr \
 	  test/test-cpp \
 	  lib/Pig/Latin.js \

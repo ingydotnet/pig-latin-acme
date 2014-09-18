@@ -6,4 +6,4 @@
 
 (test "Pig latin")
 (test "Stringy thingy")
-(test "I like Apples")
+(test "I Like Apples")

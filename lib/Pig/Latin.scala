@@ -1,19 +1,18 @@
 package Pig
 
-case class Latin(text: String) {
-	def convert: String = {
-		val pattern = """(?i)^([^aeiou]*)(.*)$"""
-		val Pattern = pattern.r
+case class Latin(english: String) {
+  def convert: String = {
+    val re = "^([^aeiou]*)(.*)$".r
 
-		val words = for {
-			word <- text.split(" +")
-		} yield word.toLowerCase match {
-			case Pattern(cons, rest) =>
-				val ay = if (cons.isEmpty()) "way" else "ay"
-				val pword = rest + cons + ay
-				(if (word(0).isUpper) pword.capitalize else pword)
-			case _ => throw new IllegalArgumentException(s"Word '${word}' is invalid")
-		}
-		words mkString " "
-	}
+    val pigLatinWords = for {
+      word <- english.split(" +")
+    } yield word.toLowerCase match {
+      case re(cons, rest) =>
+        val ay = if (cons.isEmpty()) "way" else "ay"
+        val pword = rest + cons + ay
+        (if (word(0).isUpper) pword.capitalize else pword)
+      case _ => throw new Exception("error")
+    }
+    pigLatinWords mkString " "
+  }
 }

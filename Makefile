@@ -46,8 +46,7 @@ ifeq (,$(shell which g++))
 	@echo 'XXX No C++ available'
 else
 	@echo -n '>>> C++: '
-	g++ -o test/test-cpp test/test.cpp
-	test/test-cpp
+	g++ -o test/test-cpp test/test.cpp && test/test-cpp
 endif
 	@echo
 
@@ -165,13 +164,9 @@ test-scala:
 ifeq (,$(shell which scala))
 	@echo 'XXX No Scala available'
 else
-ifeq (,$(shell scalac -version 2>&1 | grep '2\.1'))
-	@echo 'XXX Scala version 2.10 or higher required'
-else
 	@echo -n '>>> Scala: '
-	scalac lib/Pig/Latin.scala test/test.scala -d test/
-	scala -cp test/ Pig.Test
-endif
+	scalac lib/Pig/Latin.scala test/test.scala -d test/ && \
+	    scala -cp test/ Pig.Test
 endif
 	@echo
 

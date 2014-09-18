@@ -14,10 +14,10 @@ sub convert {
         my $ay = (length($1) == 0) ? 'way' : 'ay';
         my $pword = $2 . $1 . $ay;
         if ($word =~ /^[A-Z]/) {
-            return uc(substr $pword, 0, 1) . substr $pword, 1;
+            uc(substr $pword, 0, 1) . substr $pword, 1;
         }
         else {
-            return $pword;
+            $pword;
         }
     } split / +/, $self->english;
     join ' ', @pig_latin_words;

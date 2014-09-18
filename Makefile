@@ -14,6 +14,7 @@ ALL := \
     python3 \
     ruby \
     scala \
+    racket \
 
 ALL_TEST := $(ALL:%=test-%)
 
@@ -148,6 +149,15 @@ else
 	python3 test/test.py3
 endif
 	@echo
+
+### Racket ###
+test-racket:
+ifeq (,$(shell which racket))
+	@echo 'XXX No Racket available'
+else
+	@echo -n '>>> Racket: '
+	racket test/test.rkt
+endif
 
 ### Ruby ###
 test-ruby:

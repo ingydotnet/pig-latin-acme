@@ -187,7 +187,7 @@ endif
 	@echo
 
 ### Scala ###
-test-scala:
+test-scala: clean
 ifeq (,$(shell which scala))
 	@echo 'XXX No Scala available'
 else

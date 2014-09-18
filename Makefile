@@ -32,169 +32,68 @@ help:
 
 test: $(ALL_TEST) cleanup
 
-### Bash ###
 test-bash:
-ifeq (,$(shell which bash))
-	@echo 'XXX No Bash available'
-else
-	@echo -n '>>> Bash: '
-	bash test/test.bash
-endif
-	@echo
+	@test/run Bash 'bash test/test.bash'
 
-### C++ ###
 test-cpp:
-ifeq (,$(shell which g++))
-	@echo 'XXX No C++ available'
-else
-	@echo -n '>>> C++: '
-	g++ -o test/test-cpp test/test.cpp && test/test-cpp
-endif
-	@echo
+	@test/run C++ 'g++ -o test/test-cpp test/test.cpp && test/test-cpp'
 
-### CoffeeScript ###
 test-coffee: clean
-ifeq (,$(shell which coffee))
-	@echo 'XXX No CoffeeScript available'
-else
-	@echo -n '>>> CoffeeScript: '
-	coffee test/test.coffee
-endif
-	@echo
+	@test/run CoffeeScript 'coffee test/test.coffee'
 
-### Go ###
 test-go:
-ifeq (,$(shell which go))
-	@echo 'XXX No Go available'
-else
-	@echo -n '>>> Go: '
-	go run test/test.go
-endif
-	@echo
+	@test/run Go 'go run test/test.go'
 
-### Lingy ###
 test-lingy:
-ifeq (,$(shell which perl))
-	@echo 'XXX No Lingy available'
+ifneq (,$(shell perl -e 'require YAML::XS' 2>&1))
+	@echo 'XXX Perl 5 + YAML::XS module required'
 else
-  ifneq (,$(shell perl -e 'require YAML::XS' 2>&1))
-  @echo 'XXX Perl 5 YAML::XS module required'
-else
-	@echo '>>> Lingy:'
+	@echo '>>> Lingy: '
 	@perl -MYAML::XS -e 'YAML::XS::LoadFile(shift)' lib/Pig/Latin.ly.yaml
 	@echo Lingy Loads OK
 endif
-endif
 	@echo
 
-### Node.js ###
 test-node: lib/Pig/Latin.js
-ifeq (,$(shell which node))
-	@echo 'XXX No Node.js available'
-else
-	@echo -n '>>> Node.js: '
-	node test/test.js
-endif
-	@echo
+	@test/run Node.js 'node test/test.js'
 
-### Perl 5 ###
 test-perl5:
-ifeq (,$(shell which perl))
-	@echo 'XXX No Perl available'
-else
 ifneq (,$(shell perl -e 'require Mo' 2>&1))
-	@echo 'XXX Perl 5 Mo module required'
-else
-	@echo -n '>>> Perl: '
-	perl test/test.pl
-endif
-endif
+	@echo 'XXX Perl 5 + Mo module required'
 	@echo
+else
+	@test/run 'Perl 5' 'perl test/test.pl'
+endif
 
-### Perl 5 w/ Inline::CPP ###
 test-perl5-inline-cpp:
 	@# Need to check for Inline::CPP
-ifeq (,$(shell which perl))
-	@echo 'XXX No Inline::CPP Perl module available'
-else
 ifneq (,$(shell perl -e 'require Inline::CPP' 2>&1))
-	@echo 'XXX Perl 5 Inline::CPP module required'
-else
-	@echo -n '>>> Perl w/ Inline::CPP: '
-	perl test/test.inline-cpp.pl
-endif
-endif
+	@echo 'XXX Perl 5 + Inline::CPP module required'
 	@echo
+else
+	@test/run 'Perl w/ Inline::CPP' 'perl test/test.inline-cpp.pl'
+endif
 
-### Perl 6 ###
 test-perl6:
-ifeq (,$(shell which perl6))
-	@echo 'XXX No Perl 6 available'
-else
-	@echo -n '>>> Perl 6: '
-	perl6 test/test.p6
-endif
-	@echo
+	@test/run 'Perl 6' 'perl6 test/test.p6'
 
-### PHP ###
 test-php:
-ifeq (,$(shell which php))
-	@echo 'XXX No PHP available'
-else
-	@echo -n '>>> PHP: '
-	php test/test.php
-endif
-	@echo
+	@test/run PHP 'php test/test.php'
 
-### Python (2) ###
 test-python2:
-ifeq (,$(shell which python))
-	@echo 'XXX No Python available'
-else
-	@echo -n '>>> Python: '
-	python test/test.py
-endif
-	@echo
+	@test/run Python 'python test/test.py'
 
-### Python (3) ###
 test-python3:
-ifeq (,$(shell which python3))
-	@echo 'XXX No Python 3 available'
-else
-	@echo -n '>>> Python 3: '
-	python3 test/test.py3
-endif
-	@echo
+	@test/run 'Python 3' 'python3 test/test.py3'
 
-### Racket ###
 test-racket:
-ifeq (,$(shell which racket))
-	@echo 'XXX No Racket available'
-else
-	@echo -n '>>> Racket: '
-	racket test/test.rkt
-endif
-	@echo
+	@test/run Racket 'racket test/test.rkt'
 
-### Ruby ###
 test-ruby:
-ifeq (,$(shell which ruby))
-	@echo 'XXX No Ruby available'
-else
-	@echo -n '>>> Ruby: '
-	ruby test/test.rb
-endif
-	@echo
+	@test/run Ruby 'ruby test/test.rb'
 
-### Scala ###
 test-scala: clean
-ifeq (,$(shell which scala))
-	@echo 'XXX No Scala available'
-else
-	@echo -n '>>> Scala: '
-	scalac lib/Pig/Latin.scala test/test.scala -d test/ && scala -cp test/ Pig.Test
-endif
-	@echo
+	@test/run Scala 'scalac lib/Pig/Latin.scala test/test.scala -d test/ && scala -cp test/ Pig.Test'
 
 #------------------------------------------------------------------------------
 lib/Pig/Latin.js: lib/Pig/Latin.coffee

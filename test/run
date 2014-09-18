@@ -1,0 +1,21 @@
+#!/bin/bash
+
+lang="$1"
+cmd=($2)
+exe="${3:-$cmd}"
+
+if [ -n "$(which $exe)" ]; then
+  echo ">>> $lang: ${cmd[@]}"
+  eval "${cmd[@]}" | tee test/got || exit 1
+  diff=$(diff -u test/want test/got)
+  if [ -z "$diff" ]; then
+    echo PASS
+  else
+    echo "$diff"
+    echo FAIL
+  fi
+else
+  echo "XXX No $lang available"
+fi
+
+echo

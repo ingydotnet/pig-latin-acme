@@ -4,8 +4,8 @@
 (define (latin-convert text)
   (string-join
    (for/list ([word (string-split text " ")])
-     (match-let ([(list _ l w) (regexp-match #rx"^([^aeiou]*)(.*)$" word)])
-       (displayln (string-append "l " l))
+     (match-let* ([lword (string-downcase word)]
+                  [(list _ l w) (regexp-match #rx"^([^aeiou]*)(.*)$" lword)])
        (define pword (string-append w l
                                     (if (string=? l "") "way" "ay")))
        (if (char-upper-case? (first (string->list word))) ;; `l` will be empty for vowels

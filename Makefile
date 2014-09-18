@@ -13,9 +13,9 @@ ALL := \
     php \
     python2 \
     python3 \
+    racket \
     ruby \
     scala \
-    racket \
 
 ALL_TEST := $(ALL:%=test-%)
 

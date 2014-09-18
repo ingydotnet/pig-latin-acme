@@ -54,8 +54,14 @@ else
 endif
 	@echo
 
+ifeq (,$(shell which coffee))
+test-node:
+	@echo 'XXX JavaScript requires CoffeeScript'
+	@echo
+else
 test-node: lib/Pig/Latin.js
 	@test/run Node.js 'node test/test.js'
+endif
 
 test-perl5:
 ifneq (,$(shell perl -e 'require Mo' 2>&1))

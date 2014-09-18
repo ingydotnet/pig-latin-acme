@@ -5,6 +5,7 @@ ALL := \
     cpp \
     coffee \
     go \
+    lingy \
     node \
     perl5 \
     perl5-inline-cpp \
@@ -51,7 +52,7 @@ endif
 	@echo
 
 ### CoffeeScript ###
-test-coffee:
+test-coffee: clean
 ifeq (,$(shell which coffee))
 	@echo 'XXX No CoffeeScript available'
 else
@@ -67,6 +68,21 @@ ifeq (,$(shell which go))
 else
 	@echo -n '>>> Go: '
 	go run test/test.go
+endif
+	@echo
+
+### Lingy ###
+test-lingy:
+ifeq (,$(shell which perl))
+	@echo 'XXX No Lingy available'
+else
+  ifneq (,$(shell perl -e 'require YAML::XS' 2>&1))
+  @echo 'XXX Perl 5 YAML::XS module required'
+else
+	@echo '>>> Lingy:'
+	@perl -MYAML::XS -e 'YAML::XS::LoadFile(shift)' lib/Pig/Latin.ly.yaml
+	@echo Lingy Loads OK
+endif
 endif
 	@echo
 
@@ -165,8 +181,7 @@ ifeq (,$(shell which scala))
 	@echo 'XXX No Scala available'
 else
 	@echo -n '>>> Scala: '
-	scalac lib/Pig/Latin.scala test/test.scala -d test/ && \
-	    scala -cp test/ Pig.Test
+	scalac lib/Pig/Latin.scala test/test.scala -d test/ && scala -cp test/ Pig.Test
 endif
 	@echo
 
@@ -186,5 +201,10 @@ doc:
 	swim --to=pod --complete=1 --wrap=1 doc/Pig/Latin.swim > ReadMe.pod
 
 clean purge:
-	@find . -name *.pyc | xargs rm
-	@rm -fr test/test-cpp lib/Pig/__pycache__ _Inline test/Pig
+	@rm -fr \
+	  test/test-cpp \
+	  lib/Pig/Latin.js \
+	  lib/**/*.pyc \
+	  lib/Pig/__pycache__ \
+	  _Inline test/Pig
+

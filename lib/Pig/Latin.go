@@ -17,7 +17,9 @@ func (self *New) Convert() string {
   for _, word := range words {
     lword := strings.ToLower(word)
     match := regexp.MustCompile("^([^aeiou]*)(.*)$").FindStringSubmatch(lword)
-    // XXX Need to "throw" if match failed
+    if match == nil {
+      panic("error")
+    }
     ay := ""
     if len(match[1]) == 0 {
       ay = "way"

@@ -174,6 +174,7 @@ else
 	@echo -n '>>> Racket: '
 	racket test/test.rkt
 endif
+	@echo
 
 ### Ruby ###
 test-ruby:

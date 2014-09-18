@@ -4,20 +4,18 @@ the Lingy language. From this source, all the other programming language ports
 of this code will be generated.
 ###
 
-# Start class definition:
 Class Pig::Latin
-
-# Class attributes:
 @english
 
-# Instance method `convert()`
 \convert
-  pig-latin-words = @english.split(/\ +/).map \(word)
+  pig-latin-words = @english.split.map \(word)
     lword = word.lower
-    match = lword =~ /^([^aeiou]*)(.*)$/ or !!! 'error'
-    ay = m:1 == 0 ? 'way' : 'ay'
+    match = lword =~ /^([^aeiou]*)(.*)$/
+      or !!! 'error'
+    ay = match:1 == 0 ? 'way' : 'ay'
     pword = match:2 + match:1 + ay
     if word:0.is-upper
-      pword = pword:0.upper + pword:1:
-    pword
-  pig-latin-words.join ' '
+      pword:0.upper + pword:1:
+    else
+      pword
+  pig-latin-words.join

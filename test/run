@@ -10,6 +10,7 @@ if [ -n "$(which $exe)" ]; then
   diff=$(diff -u test/want test/got)
   if [ -z "$diff" ]; then
     echo PASS
+    rm -f test/got
   else
     echo "$diff"
     echo FAIL

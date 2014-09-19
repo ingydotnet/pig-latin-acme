@@ -72,11 +72,21 @@ trivial. The code exercises these language features:
 
 =item * If/Else conditionals
 
+=over
+
+=item * Ternary assignment
+
+=back
+
 =item * Strings
 
 =over
 
 =item * String Standard Methods
+
+=item * Substrings
+
+=item * Split
 
 =item * Concatentation
 
@@ -93,6 +103,12 @@ trivial. The code exercises these language features:
 =back
 
 =item * Regular expression usage
+
+=over
+
+=item * Captures
+
+=back
 
 =item * Exceptions
 
@@ -144,13 +160,35 @@ This seems like a decent subset to get a ball rolling.
 
 =over
 
+=item * C#
+
 =item * Clojure
+
+=item * D
+
+=item * Dylan
+
+=item * Eiffel
+
+=item * Erlang
+
+=item * Groovy
+
+=item * Haskell
 
 =item * Java
 
+=item * Lua
+
+=item * Objective C
+
 =item * Processing
 
+=item * Prolog
+
 =item * Scratch
+
+=item * Smalltalk
 
 =back
 

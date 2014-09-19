@@ -45,13 +45,17 @@ trivial. The code exercises these language features:
 * Looping / Iteration
 * Lambda Functions
 * If/Else conditionals
+  * Ternary assignment
 * Strings
   * String Standard Methods
+  * Substrings
+  * Split
   * Concatentation
 * Arrays
   * Array Indexing
   * Array Standard Methods
 * Regular expression usage
+  * Captures
 * Exceptions
 
 This seems like a decent subset to get a ball rolling.
@@ -78,10 +82,21 @@ This seems like a decent subset to get a ball rolling.
 
 = Languages Desired (Pull Requests please!)
 
+* C#
 * Clojure
+* D
+* Dylan
+* Eiffel
+* Erlang
+* Groovy
+* Haskell
 * Java
+* Lua
+* Objective C
 * Processing
+* Prolog
 * Scratch
+* Smalltalk
 
 = Strategy
 

@@ -16,6 +16,7 @@ ALL := \
     racket \
     ruby \
     scala \
+    tcl \
 
 ALL_TEST := $(ALL:%=test-%)
 
@@ -101,6 +102,9 @@ test-ruby:
 test-scala: clean
 	@test/run Scala 'scalac lib/Pig/Latin.scala test/test.scala -d test/ && scala -cp test/ Pig.Test'
 
+test-tcl:
+	@test/run Tcl 'tclsh test/test.tcl'
+
 #------------------------------------------------------------------------------
 lib/Pig/Latin.js: lib/Pig/Latin.coffee
 	@coffee --compile $< > $@
@@ -122,5 +126,4 @@ clean purge cleanup:
 	  lib/Pig/Latin.js \
 	  lib/**/*.pyc \
 	  lib/Pig/__pycache__ \
-	  _Inline test/Pig
-
+	  _Inline test/Pig \

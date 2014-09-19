@@ -74,13 +74,14 @@ This seems like a decent subset to get a ball rolling.
 * Racket
 * Ruby
 * Scala
+* Tcl
 
 = Languages Desired (Pull Requests please!)
 
+* Clojure
 * Java
 * Processing
 * Scratch
-* Tcl
 
 = Strategy
 

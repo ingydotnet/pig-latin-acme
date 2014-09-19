@@ -136,19 +136,21 @@ This seems like a decent subset to get a ball rolling.
 
 =item * Scala
 
+=item * Tcl
+
 =back
 
 =head1 Languages Desired (Pull Requests please!)
 
 =over
 
+=item * Clojure
+
 =item * Java
 
 =item * Processing
 
 =item * Scratch
-
-=item * Tcl
 
 =back
 

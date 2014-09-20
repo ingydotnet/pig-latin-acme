@@ -51,6 +51,7 @@ trivial. The code exercises these language features:
   * Substrings
   * Split
   * Concatentation
+  * Interpolation
 * Arrays
   * Array Indexing
   * Array Standard Methods

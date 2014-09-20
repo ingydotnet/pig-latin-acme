@@ -36,7 +36,7 @@ test: $(ALL_TEST) cleanup
 test-bash:
 	@test/run Bash 'bash test/test.bash'
 
-test-cpp:
+test-cpp test-c++:
 	@test/run C++ 'g++ -o test/test-cpp test/test.cpp && test/test-cpp'
 
 test-coffee: clean
@@ -64,7 +64,7 @@ test-node: lib/Pig/Latin.js
 	@test/run Node.js 'node test/test.js'
 endif
 
-test-perl5 test-perl:
+test-perl5 test-perl test-pl test-pm:
 ifneq (,$(shell perl -e 'require Mo' 2>&1))
 	@echo 'XXX Perl 5 + Mo module required'
 	@echo
@@ -81,22 +81,22 @@ else
 	@test/run 'Perl w/ Inline::CPP' 'perl test/test.inline-cpp.pl'
 endif
 
-test-perl6:
+test-perl6 test-p6 test-pm6:
 	@test/run 'Perl 6' 'perl6 test/test.p6'
 
 test-php:
 	@test/run PHP 'php test/test.php'
 
-test-python2 test-python:
+test-python2 test-python test-py:
 	@test/run Python 'python test/test.py'
 
-test-python3:
+test-python3 test-py3:
 	@test/run 'Python 3' 'python3 test/test.py3'
 
-test-racket:
+test-racket test-rkt:
 	@test/run Racket 'racket test/test.rkt'
 
-test-ruby:
+test-ruby test-rb:
 	@test/run Ruby 'ruby test/test.rb'
 
 test-scala: clean

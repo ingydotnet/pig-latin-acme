@@ -3,7 +3,7 @@
 
 ---
 type: Module
-name: Pig.Latin
+name: Pig/Latin
 anon:
 - &001
   type: Func
@@ -21,7 +21,7 @@ anon:
     - [[$pword/0, .upper], +, $pword/1]
     - $pword
 class:
-- name: Pig.Latin
+- name: Pig/Latin
   attr: [english]
   vars:
     english: Str

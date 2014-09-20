@@ -16,16 +16,10 @@ func (self *New) Convert() string {
   words := strings.Split(self.English, " ")
   for _, word := range words {
     lword := strings.ToLower(word)
-    match := regexp.MustCompile("^([^aeiou]*)(.*)$").FindStringSubmatch(lword)
-    if match == nil {
-      panic("error")
-    }
-    ay := ""
-    if len(match[1]) == 0 {
-      ay = "way"
-    } else {
-      ay = "ay"
-    }
+    match := regexp.MustCompile("^([^aeiou]*)(.*)$").
+      FindStringSubmatch(lword)
+    if match == nil { panic("error") }
+    ay := "ay"; if len(match[1]) == 0 { ay = "way" }
     pword := match[2] + match[1] + ay
     if regexp.MustCompile("^[A-Z]").MatchString(word) {
         pword = strings.ToUpper(pword[0:1]) + pword[1:]

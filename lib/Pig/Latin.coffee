@@ -5,8 +5,8 @@ exports.Pig.Latin = class Latin
   convert: ->
     pig_latin_words = @english.split(/\ +/).map (word)->
       lword = word.toLowerCase()
-      match = lword.match /^([^aeiou]*)(.*)$/ \
-        or throw 'error'
+      match = lword.match /^([^aeiou]*)(.*)$/ or
+        throw 'error'
       ay = if match[1].length == 0 then 'way' else 'ay'
       pword = match[2] + match[1] + ay
       if word.match /^[A-Z]/

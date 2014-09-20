@@ -11,7 +11,7 @@ Class Pig::Latin
   pig-latin-words = @english.split.map \(word)
     lword = word.lower
     match = lword =~ /^([^aeiou]*)(.*)$/
-      or !!! 'error'
+      or !!! "Error parsing word '$word'"
     ay = match:1 == 0 ? 'way' : 'ay'
     pword = match:2 + match:1 + ay
     if word:0.is-upper

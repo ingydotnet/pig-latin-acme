@@ -64,7 +64,7 @@ test-node: lib/Pig/Latin.js
 	@test/run Node.js 'node test/test.js'
 endif
 
-test-perl5:
+test-perl5 test-perl:
 ifneq (,$(shell perl -e 'require Mo' 2>&1))
 	@echo 'XXX Perl 5 + Mo module required'
 	@echo
@@ -87,7 +87,7 @@ test-perl6:
 test-php:
 	@test/run PHP 'php test/test.php'
 
-test-python2:
+test-python2 test-python:
 	@test/run Python 'python test/test.py'
 
 test-python3:

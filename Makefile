@@ -6,6 +6,7 @@ ALL := \
     coffee \
     go \
     lingy \
+    livescript \
     node \
     perl5 \
     perl5-inline-cpp \
@@ -54,6 +55,9 @@ else
 	@echo Lingy Loads OK
 endif
 	@echo
+
+test-livescript test-ls: clean
+	@test/run LiveScript 'livescript test/test.ls'
 
 ifeq (,$(shell which coffee))
 test-node:

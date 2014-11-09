@@ -29,6 +29,8 @@ equivalents.
 This involves not only code generation, but also test, doc and packaging tool
 generation.
 
+= Language Features Exercised
+
 Pig Latin translation was chosen because it is simple but not completely
 trivial. The code exercises these language features:
 

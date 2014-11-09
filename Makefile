@@ -46,6 +46,9 @@ test-coffee: clean
 test-go:
 	@test/run Go 'go run test/test.go'
 
+test-haskell:
+	@test/run Haskell 'runghc lib/Pig/Latin.hs test/test.hs'
+
 test-lingy:
 ifneq (,$(shell perl -e 'require YAML::XS' 2>&1))
 	@echo 'XXX Perl 5 + YAML::XS module required'

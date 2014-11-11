@@ -1,7 +1,7 @@
 Pig::Latin
 ==========
 
-Convert English to Pig Latin
+Acmeist English to Pig Latin Converter
 
 <badge travis ingydotnet/pig-latin-acme>
 
@@ -10,16 +10,28 @@ Convert English to Pig Latin
   use Pig::Latin
   say Pig::Latin('I love Pig Latin').convert
 
+Run this command to watch this work in 15+ languages:
+
+  make test
+
 = Description
 
-This is an Acmeist version of a Pig Latin translation framework written in
-many programming languages. The languages chosen are OO in nature (or can fake
-it easily). The code is written as literal porting translations and does not
-attempt to show off any special features of a language.
+This is an Acmeist version of a English to Pig Latin conversion framework
+written in many programming languages. The languages chosen are OO in nature
+(or can fake it easily). The code is written as literal porting translations
+and does not attempt to show off any special features of a language.
 
-One of the implementations is in CafeScript, a language that is an evolution
-of CoffeeScript, but intends to generate equivalents in all the other
-languages (not just JavaScript).
+/The goal of this is to generate a *module* in many languages from one
+source./
+
+One of the implementations is in Lingy, a /syntaxless/ language that is simply
+an AST data structure that contains all the data necessary to generate
+equivalent code in many other languages. In leiu of a syntax, I use YAML to
+directly encode the data.
+
+Another one of the implementations is in CafeScript, a language that is an
+evolution of CoffeeScript, but compiles to the Lingy AST (and thus to all the
+backend languages).
 
 The overall goal of this project, is to make a proof of concept CafeScript
 that can generate equivalents in all the target languages and also publish
@@ -29,22 +41,51 @@ equivalents.
 This involves not only code generation, but also test, doc and packaging tool
 generation.
 
+= Contributing
+
+It is encouraged for people to port this to as many languages as makes sense.
+Please fork this on GitHub:
+
+  git@github.com:ingydotnet/pig-latin-acme
+
+and send a pull request.
+
+Here are the guidelines for contributing:
+
+* Add a `test-<lang>` rule to the Makefile
+* Add a `test/test.<lang-ext>` test file
+* Add a `lib/Pig/Latin.<lang-ext>` module file
+* Port as literally as you can
+  * Code like a compiler not like a human expert
+  * That said, make the code as beautiful as a great compiler could do
+* Make tests pass with `make test`
+* Add yourself to [/Authors] section of `doc/Pig/Latin.swim`
+  * Run `make doc` to regenerate the `ReadMe.pod`
+
+Don't worry about getting it perfect. Your code will be reviewed and tweaked
+where needed/possible.
+
+Even if your language doesn't seem like a great /fit/ for this, try it anyway!
+
 = Language Features Exercised
 
 Pig Latin translation was chosen because it is simple but not completely
 trivial. The code exercises these language features:
 
+* Scripts
+  * 
 * Libraries
-  * load/use/require
+  * load, use, require
   * LIB path manipulation
+  * `lib/Pig/Latin.<language-extension>` files
 * Classes
-* Methods
-* Construction
-* Attributes
+  * Methods
+  * Construction
+  * Attributes
 * Declaration
 * Assignment
 * Method calls
-* Looping / Iteration
+* Looping/Iteration
 * Lambda Functions
 * If/Else conditionals
   * Ternary assignment
@@ -58,8 +99,12 @@ trivial. The code exercises these language features:
   * Array Indexing
   * Array Standard Methods
 * Regular expression usage
-  * Captures
+  * Match operation
+  * Capture Groups
 * Exceptions
+* I/O
+  * Print to STDOUT
+  * println, say, puts (adds newline)
 
 This seems like a decent subset to get a ball rolling.
 
@@ -101,20 +146,21 @@ This seems like a decent subset to get a ball rolling.
 * Prolog
 * Scratch
 * Smalltalk
+* XSLT
 
 = Strategy
 
-* Hand port the algorithm to 15 - 20 languages
+* Hand port the module to 15 - 20 languages
   * With working tests
-* Port the CafeScript to a YAML AST
-* Generate the target languages
+* Port the CafeScript to a Lingy/YAML AST
+* Generate the target languages from the Lingy/YAML
   * Pass tests
 * Write a CafeScript compiler that can produce the YAML AST
 * Make TestML suite pass in all languages
 * Generate the language specific subdirs for packaging and release
 * Automate everything from top level Makefile
 
-= Author
+= Authors
 
 Written by:
 

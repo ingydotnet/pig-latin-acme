@@ -8,7 +8,7 @@ See http://github.com/ingydotnet/swim-pm#readme
 
 =head1 Name
 
-Pig::Latin - Convert English to Pig Latin
+Pig::Latin - Acmeist English to Pig Latin Converter
 
 =for html
 <a href="https://travis-ci.org/ingydotnet/pig-latin-acme"><img src="https://travis-ci.org/ingydotnet/pig-latin-acme.png" alt="pig-latin-acme"></a>
@@ -18,16 +18,28 @@ Pig::Latin - Convert English to Pig Latin
     use Pig::Latin
     say Pig::Latin('I love Pig Latin').convert
 
+Run this command to watch this work in 15+ languages:
+
+    make test
+
 =head1 Description
 
-This is an Acmeist version of a Pig Latin translation framework written in
-many programming languages. The languages chosen are OO in nature (or can fake
-it easily). The code is written as literal porting translations and does not
-attempt to show off any special features of a language.
+This is an Acmeist version of a English to Pig Latin conversion framework
+written in many programming languages. The languages chosen are OO in nature
+(or can fake it easily). The code is written as literal porting translations
+and does not attempt to show off any special features of a language.
 
-One of the implementations is in CafeScript, a language that is an evolution
-of CoffeeScript, but intends to generate equivalents in all the other
-languages (not just JavaScript).
+I<< The goal of this is to generate a B<module> in many languages from one
+source. >>
+
+One of the implementations is in Lingy, a I<syntaxless> language that is
+simply an AST data structure that contains all the data necessary to generate
+equivalent code in many other languages. In leiu of a syntax, I use YAML to
+directly encode the data.
+
+Another one of the implementations is in CafeScript, a language that is an
+evolution of CoffeeScript, but compiles to the Lingy AST (and thus to all the
+backend languages).
 
 The overall goal of this project, is to make a proof of concept CafeScript
 that can generate equivalents in all the target languages and also publish
@@ -37,6 +49,53 @@ equivalents.
 This involves not only code generation, but also test, doc and packaging tool
 generation.
 
+=head1 Contributing
+
+It is encouraged for people to port this to as many languages as makes sense.
+Please fork this on GitHub:
+
+    git@github.com:ingydotnet/pig-latin-acme
+
+and send a pull request.
+
+Here are the guidelines for contributing:
+
+=over
+
+=item * Add a C<< test-<lang> >> rule to the Makefile
+
+=item * Add a C<< test/test.<lang-ext> >> test file
+
+=item * Add a C<< lib/Pig/Latin.<lang-ext> >> module file
+
+=item * Port as literally as you can
+
+=over
+
+=item * Code like a compiler not like a human expert
+
+=item * That said, make the code as beautiful as a great compiler could do
+
+=back
+
+=item * Make tests pass with C<make test>
+
+=item * Add yourself to L</Authors> section of C<doc/Pig/Latin.swim>
+
+=over
+
+=item * Run C<make doc> to regenerate the C<ReadMe.pod>
+
+=back
+
+=back
+
+Don't worry about getting it perfect. Your code will be reviewed and tweaked
+where needed/possible.
+
+Even if your language doesn't seem like a great I<fit> for this, try it
+anyway!
+
 =head1 Language Features Exercised
 
 Pig Latin translation was chosen because it is simple but not completely
@@ -44,17 +103,29 @@ trivial. The code exercises these language features:
 
 =over
 
+=item * Scripts
+
+=over
+
+=item * 
+
+=back
+
 =item * Libraries
 
 =over
 
-=item * loadI<use>require
+=item * load, use, require
 
 =item * LIB path manipulation
+
+=item * C<< lib/Pig/Latin.<language-extension> >> files
 
 =back
 
 =item * Classes
+
+=over
 
 =item * Methods
 
@@ -62,13 +133,15 @@ trivial. The code exercises these language features:
 
 =item * Attributes
 
+=back
+
 =item * Declaration
 
 =item * Assignment
 
 =item * Method calls
 
-=item * Looping / Iteration
+=item * Looping/Iteration
 
 =item * Lambda Functions
 
@@ -110,11 +183,23 @@ trivial. The code exercises these language features:
 
 =over
 
-=item * Captures
+=item * Match operation
+
+=item * Capture Groups
 
 =back
 
 =item * Exceptions
+
+=item * I/O
+
+=over
+
+=item * Print to STDOUT
+
+=item * println, say, puts (adds newline)
+
+=back
 
 =back
 
@@ -196,13 +281,15 @@ This seems like a decent subset to get a ball rolling.
 
 =item * Smalltalk
 
+=item * XSLT
+
 =back
 
 =head1 Strategy
 
 =over
 
-=item * Hand port the algorithm to 15 - 20 languages
+=item * Hand port the module to 15 - 20 languages
 
 =over
 
@@ -210,9 +297,9 @@ This seems like a decent subset to get a ball rolling.
 
 =back
 
-=item * Port the CafeScript to a YAML AST
+=item * Port the CafeScript to a Lingy/YAML AST
 
-=item * Generate the target languages
+=item * Generate the target languages from the Lingy/YAML
 
 =over
 
@@ -230,7 +317,7 @@ This seems like a decent subset to get a ball rolling.
 
 =back
 
-=head1 Author
+=head1 Authors
 
 Written by:
 
